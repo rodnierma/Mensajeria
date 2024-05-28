@@ -72,10 +72,51 @@ def verificar_token(req):
     
 
 def recibir_mensajes(req):
-    req = request.get_json()
-    agregar_mensajes_log(req)
+    try:
+        req = request.get_json()
+        entry =req['entry'][0]
+        changes = entry['changes'][0]
+        value = changes['value']
+        objeto_mensaje = value['messages']
 
-    return jsonify({'message':'EVENT_RECEIVED'})
+        if objeto_mensaje:
+            messages = objeto_mensaje[0]
+
+            if "type" in messages:
+                tipo = messages["type"]
+                #Guardar Log en la BD
+                agregar_mensajes_log(json.dumps(messages))        
+
+                if tipo == "interactive":
+                    tipo_interactivo = messages["interactive"]["type"]
+
+                    if tipo_interactivo == "button_reply":
+                        text = messages["interactive"]["button_reply"]["id"]
+                        numero = messages["from"]
+
+                        enviar_mensajes_whatsapp(text,numero)
+                    
+                    elif tipo_interactivo == "list_reply":
+                        text = messages["interactive"]["list_reply"]["id"]
+                        numero = messages["from"]
+
+                        enviar_mensajes_whatsapp(text,numero)
+
+                if "text" in messages:
+                    text = messages["text"]["body"]
+                    numero = messages["from"]
+
+                    enviar_mensajes_whatsapp(text,numero)
+
+                    #Guardar Log en la BD
+                    agregar_mensajes_log(json.dumps(messages))
+
+        return jsonify({'message':'EVENT_RECEIVED'})
+    except Exception as e:
+        return jsonify({'message':'EVENT_RECEIVED'})
+    
+def enviar_mensajes_whatsapp(texto,number):
+    texto = texto.lower()    
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
