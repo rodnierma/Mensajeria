@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request,jsonify,render_template
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
@@ -49,7 +49,32 @@ def agregar_mensajes_log(texto):
     db.session.add(nuevo_registro)
     db.session.commit()
 
-#agregar_mensajes_log(json.dumps("Test1"))
+#TOKEN De Verificación para la configuración
+TOKEN_ANDERCODE = "ANDERCODE"
+
+@app.route('/webhook',methods=['GET','POST'])
+def webhook():
+    if request.method == 'GET':
+        challenge = verificar_token(request)
+        return challenge
+    elif request.method == 'POST':
+        response = recibir_mensajes(request)
+        return response
+
+def verificar_token(req):
+    token=req.args.get('hub.verify_token')
+    challenge = req.args.get('hub.challenge')
+
+    if challenge and token == TOKEN_ANDERCODE:
+        return challenge
+    else:
+        return jsonify({'error':'Token Invalido'}),401
+    
+
+def recibir_mensajes(req):
+    req = request.get_json()
+    agregar_mensajes_log(req)
+    return jsonify({'message':'EVENT_RECEIVED'})
 
 if __name__=='__main__':
     app.run(host='0.0.0.0',port=80,debug=True)
