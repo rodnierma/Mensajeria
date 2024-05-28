@@ -84,8 +84,6 @@ def recibir_mensajes(req):
 
             if "type" in messages:
                 tipo = messages["type"]
-                #Guardar Log en la BD
-                agregar_mensajes_log(json.dumps(messages))        
 
                 if tipo == "interactive":
                     tipo_interactivo = messages["interactive"]["type"]
@@ -110,6 +108,9 @@ def recibir_mensajes(req):
 
                     agregar_mensajes_log(json.dumps(text))
                     agregar_mensajes_log(json.dumps(numero))
+
+        #Guardar Log en la BD
+        agregar_mensajes_log(json.dumps(objeto_mensaje))        
 
         return jsonify({'message':'EVENT_RECEIVED'})
     except Exception as e:
