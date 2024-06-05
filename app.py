@@ -128,7 +128,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "🚀 Hola, ¿Cómo estás? Bienvenido."
+                "body": "🚀 Hola, ¿Cómo papi que servicios quieres PT o Culeee? Bienvenido."
             }
         }
     elif "1" in texto:
