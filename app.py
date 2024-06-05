@@ -128,7 +128,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "🚀 Hola, ¿Cómo papi que servicios quieres PT o Culeee? Bienvenido."
+                "body": "🚀 Hola, ¿Cómo estas papi que servicios quiere usted Un buen  PTX o Full Culeee? Bienvenido."
             }
         }
     elif "1" in texto:
