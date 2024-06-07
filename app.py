@@ -368,7 +368,7 @@ def enviar_mensajes_whatsapp(texto,number):
             "type": "text",
             "text": {
                 "preview_url": False,
-                "body": "🚀 Hola, visita mi web anderson-bastidas.com para más información.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Curso. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en PDF. 📄\n4️⃣. Audio explicando curso. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con AnderCode. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
+                "body": "🚀 Hola, visita mi web https://www.saguapac.com.bo para más información.\n \n📌Por favor, ingresa un número #️⃣ para recibir información.\n \n1️⃣. Información del Curso. ❔\n2️⃣. Ubicación del local. 📍\n3️⃣. Enviar temario en PDF. 📄\n4️⃣. Audio explicando curso. 🎧\n5️⃣. Video de Introducción. ⏯️\n6️⃣. Hablar con AnderCode. 🙋‍♂️\n7️⃣. Horario de Atención. 🕜 \n0️⃣. Regresar al Menú. 🕜"
             }
         }
 
@@ -377,7 +377,7 @@ def enviar_mensajes_whatsapp(texto,number):
 
     headers = {
         "Content-Type" : "application/json",
-        "Authorization" : "Bearer EAAVA6ysx7y4BOyhF6rIYz7dsZCkjHuSvnB5TulrtgdDsfkU2Kq5gmtnCD5CrCpS2Ue3LQeBeK5PZCZCwK6LUCq4RhL3s4DZCu7fLZBwCK20KX2lt73bo4qsFcHHUkOdjRFG0TkQqU8UxMQOXgcZAXSKrXlCNbAJCJAooaz8fuOTGOoZBLoQbXC2A42PqJRF8KD7XYiI4hKP3wk1ZAk1OUgZDZD"
+        "Authorization" : "Bearer EAAVA6ysx7y4BOyEq00Q0z51qgJWOssqba9SxoFvaYL4k76nZA8ZBdoHCLCSExomOSmrt3qo5enpZBE2XLn7jA01gOflA6oQmEV2OwTqhdakMlWZBmpgpzqnehRoHocAUtzHJzEwztKAxw1ZB7ZBfzLNgEiViqrVQy7fyuAUZBTdJrWTPlpXQsPlXvQrF0gVZBaRWJvUJBJxs98EqzDnu"
     }
 
     connection = http.client.HTTPSConnection("graph.facebook.com")
